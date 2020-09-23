@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -49,13 +53,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 appId = getString(R.string.weChat_dev_key);
             }
-//            IWXAPI api = WXAPIFactory.createWXAPI(this, appId);
-//            //                    api.registerApp(appId);
-//            WXLaunchMiniProgram.Req req = new WXLaunchMiniProgram.Req();
-//            req.userName = ""; // 填小程序原始id
-////				req.path = "/pages/index/index";                  //拉起小程序页面的可带参路径，不填默认拉起小程序首页
-////				req.miniprogramType = WXLaunchMiniProgram.Req.MINIPTOGRAM_TYPE_RELEASE;// 可选打开 开发版，体验版和正式版
-//            api.sendReq(req);
+            IWXAPI api = WXAPIFactory.createWXAPI(this, appId);
+            //                    api.registerApp(appId);
+            WXLaunchMiniProgram.Req req = new WXLaunchMiniProgram.Req();
+            req.userName = ""; // 填小程序原始id
+//				req.path = "/pages/index/index";                  //拉起小程序页面的可带参路径，不填默认拉起小程序首页
+//				req.miniprogramType = WXLaunchMiniProgram.Req.MINIPTOGRAM_TYPE_RELEASE;// 可选打开 开发版，体验版和正式版
+            api.sendReq(req);
         }
     }
 
