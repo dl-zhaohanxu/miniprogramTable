@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.tencent.mm.opensdk.constants.ConstantsAPI;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
@@ -56,9 +58,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             IWXAPI api = WXAPIFactory.createWXAPI(this, appId);
             //                    api.registerApp(appId);
             WXLaunchMiniProgram.Req req = new WXLaunchMiniProgram.Req();
-            req.userName = ""; // 填小程序原始id
+            req.userName = "gh_dee3c914028f"; // 填小程序原始id
 //				req.path = "/pages/index/index";                  //拉起小程序页面的可带参路径，不填默认拉起小程序首页
-//				req.miniprogramType = WXLaunchMiniProgram.Req.MINIPTOGRAM_TYPE_RELEASE;// 可选打开 开发版，体验版和正式版
+				req.miniprogramType = WXLaunchMiniProgram.Req.MINIPROGRAM_TYPE_PREVIEW;// 可选打开 开发版，体验版和正式版
             api.sendReq(req);
         }
     }
@@ -72,5 +74,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return false;
         }
 
+    }
+
+    public void onResp(BaseResp resp) {
+        if (resp.getType() == ConstantsAPI.COMMAND_LAUNCH_WX_MINIPROGRAM) {
+            WXLaunchMiniProgram.Resp launchMiniProResp = (WXLaunchMiniProgram.Resp) resp;
+            String extraData =launchMiniProResp.extMsg; //对应小程序组件 <button open-type="launchApp"> 中的 app-parameter 属性
+        }
     }
 }

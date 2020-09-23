@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">multiplicationTable</string>
-    <string name="weChat_key"></string>
+    <string name="weChat_key">wx4ec5960468049631</string>
     <string name="weChat_secret"></string>
     <!-- 测试版 -->
-    <string name="weChat_dev_key"></string>
+    <string name="weChat_dev_key">wx4ec5960468049631</string>
     <string name="weChat_dev_secret"></string>
 </resources>
